@@ -10,7 +10,10 @@
     <packaging>pom</packaging>
     <name>backstepbystep</name>
  
-    <modules></modules>
+    <modules>
+        <module>frontstepbystep-api</module>
+        <module>backstepbystep-back</module>
+    </modules>
     
     <repositories>
         <repository>
