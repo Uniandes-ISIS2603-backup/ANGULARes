@@ -40,7 +40,7 @@ public class ClientLogic {
             throw new BusinessLogicException("El nombre es inválido");
         }
         if (clientEntity.getUsser() == null || clientEntity.getUsser().equals("")) {
-            throw new BusinessLogicException("El nombre es inválido");
+            throw new BusinessLogicException("El Usuario es inválido");
         }
         if (clientEntity.getPassword() == null || clientEntity.getPassword().equals("")) {
             throw new BusinessLogicException("La contrasena es inválido");

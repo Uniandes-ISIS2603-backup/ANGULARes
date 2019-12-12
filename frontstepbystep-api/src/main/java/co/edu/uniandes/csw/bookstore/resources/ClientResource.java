@@ -185,13 +185,13 @@ public class ClientResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra el libro.
      */
-   // @Path("{clientsId: \\d+}/reviews")
-   // public Class<ReviewResource> getReviewResource(@PathParam("clientsId") Long clientsId) {
-   //     if (clientLogic.getClient(booksId) == null) {
-     //       throw new WebApplicationException("El recurso /books/" + booksId + "/reviews no existe.", 404);
-     //   }
-     //   return ReviewResource.class;
-    //}
+    @Path("{clientsId: \\d+}/books")
+    public Class<ClientBooksResource> getBookResource(@PathParam("clientsId") Long clientsId) {
+        if (clientLogic.getClient(clientsId) == null) {
+            throw new WebApplicationException("El recurso /clients/" + clientsId + "/books no existe.", 404);
+        }
+        return ClientBooksResource.class;
+    }
 
     /**
      * Convierte una lista de entidades a DTO.
