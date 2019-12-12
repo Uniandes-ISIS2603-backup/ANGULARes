@@ -43,7 +43,10 @@ public class ClientLogic {
             throw new BusinessLogicException("El nombre es inválido");
         }
         if (clientEntity.getPassword() == null || clientEntity.getPassword().equals("")) {
-            throw new BusinessLogicException("El contrasena es inválido");
+            throw new BusinessLogicException("La contrasena es inválido");
+        }
+         if (clientEntity.getLocation()== null || clientEntity.getLocation().equals("")) {
+            throw new BusinessLogicException("La direccion es inválido");
         }
         if (persistence.findByUser(clientEntity.getUsser()) != null) {
             throw new BusinessLogicException("El usuario ya existe");
@@ -96,6 +99,9 @@ public class ClientLogic {
         }
          if (clientEntity.getPassword() == null || clientEntity.getPassword().equals("")) {
             throw new BusinessLogicException("El contrasena es inválido");
+        }
+         if (clientEntity.getLocation()== null || clientEntity.getLocation().equals("")) {
+            throw new BusinessLogicException("La direccion es inválido");
         }
         ClientEntity newEntity = persistence.update(clientEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el libro con id = {0}", clientEntity.getId());

@@ -133,6 +133,8 @@ public class ClientPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getUsser(), entity.getUsser());
         Assert.assertEquals(newEntity.getPassword(), entity.getPassword());
+        Assert.assertEquals(newEntity.getLocation(), entity.getLocation());
+
     }
 
     /**
@@ -164,6 +166,7 @@ public class ClientPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getUsser(), newEntity.getUsser());
         Assert.assertEquals(entity.getPassword(), newEntity.getPassword());
+                Assert.assertEquals(newEntity.getLocation(), entity.getLocation());
     }
 
     /**
@@ -195,6 +198,7 @@ public class ClientPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getUsser(), resp.getUsser());
         Assert.assertEquals(newEntity.getPassword(), resp.getPassword());
+        Assert.assertEquals(newEntity.getLocation(), resp.getLocation());
     }
 
     /**
