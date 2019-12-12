@@ -50,6 +50,10 @@ public class BookEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date publishDate;
     private String description;
+    private boolean bestSeller;
+    private boolean EsNuevo;
+    private boolean EsDescuento;
+    private double precio;
 
     @PodamExclude
     @ManyToOne
@@ -64,8 +68,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     private List<AuthorEntity> authors = new ArrayList<AuthorEntity>();
 
     /**
-     * Devuelve el nombre del libro.
-     *
      * @return the name
      */
     public String getName() {
@@ -73,8 +75,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica el nombre del libro.
-     *
      * @param name the name to set
      */
     public void setName(String name) {
@@ -82,8 +82,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Devuelve el ISBN del libro.
-     *
      * @return the isbn
      */
     public String getIsbn() {
@@ -91,8 +89,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica el ISBN del libro.
-     *
      * @param isbn the isbn to set
      */
     public void setIsbn(String isbn) {
@@ -100,8 +96,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Devuelve la imagen del libro.
-     *
      * @return the image
      */
     public String getImage() {
@@ -109,8 +103,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica la imagen del libro.
-     *
      * @param image the image to set
      */
     public void setImage(String image) {
@@ -118,8 +110,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Devuelve la fecha de publicación del libro.
-     *
      * @return the publishDate
      */
     public Date getPublishDate() {
@@ -127,8 +117,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica la fecha de publicación del libro.
-     *
      * @param publishDate the publishDate to set
      */
     public void setPublishDate(Date publishDate) {
@@ -136,8 +124,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Devuelve la descrupción del libro.
-     *
      * @return the description
      */
     public String getDescription() {
@@ -145,8 +131,6 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica la descripción del libro.
-     *
      * @param description the description to set
      */
     public void setDescription(String description) {
@@ -154,44 +138,90 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Devuelve la editorial a la que pertenece el libro.
-     *
-     * @return Una entidad de editorial.
+     * @return the bestSeller
+     */
+    public boolean isBestSeller() {
+        return bestSeller;
+    }
+
+    /**
+     * @param bestSeller the bestSeller to set
+     */
+    public void setBestSeller(boolean bestSeller) {
+        this.bestSeller = bestSeller;
+    }
+
+    /**
+     * @return the EsNuevo
+     */
+    public boolean isEsNuevo() {
+        return EsNuevo;
+    }
+
+    /**
+     * @param EsNuevo the EsNuevo to set
+     */
+    public void setEsNuevo(boolean EsNuevo) {
+        this.EsNuevo = EsNuevo;
+    }
+
+    /**
+     * @return the EsDescuento
+     */
+    public boolean isEsDescuento() {
+        return EsDescuento;
+    }
+
+    /**
+     * @param EsDescuento the EsDescuento to set
+     */
+    public void setEsDescuento(boolean EsDescuento) {
+        this.EsDescuento = EsDescuento;
+    }
+
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the editorial
      */
     public EditorialEntity getEditorial() {
         return editorial;
     }
 
     /**
-     * Modifica la editorial a la que pertenece el libro.
-     *
-     * @param editorialEntity La nueva editorial.
+     * @param editorial the editorial to set
      */
-    public void setEditorial(EditorialEntity editorialEntity) {
-        this.editorial = editorialEntity;
+    public void setEditorial(EditorialEntity editorial) {
+        this.editorial = editorial;
     }
 
     /**
-     * Devuelve las reseñas del libro.
-     *
-     * @return Lista de entidades de tipo Reseña
+     * @return the reviews
      */
     public List<ReviewEntity> getReviews() {
         return reviews;
     }
 
     /**
-     * Modifica las reseñas de un libro.
-     *
-     * @param reviews Las nuevas reseñas.
+     * @param reviews the reviews to set
      */
     public void setReviews(List<ReviewEntity> reviews) {
         this.reviews = reviews;
     }
 
     /**
-     * Devuelve los autores de un libro
-     *
      * @return the authors
      */
     public List<AuthorEntity> getAuthors() {
@@ -199,11 +229,12 @@ public class BookEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Modifica los autores de un libro
-     *
      * @param authors the authors to set
      */
     public void setAuthors(List<AuthorEntity> authors) {
         this.authors = authors;
     }
+
+    
+
 }

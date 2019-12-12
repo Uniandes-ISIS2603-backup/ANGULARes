@@ -78,6 +78,11 @@ public class BookDTO implements Serializable {
     private String description;
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date publishingdate;
+    
+    private boolean bestSeller;
+    private boolean EsNuevo;
+    private boolean EsDescuento;
+    private double precio;
 
     /*
     * Relación a una editorial  
@@ -104,6 +109,10 @@ public class BookDTO implements Serializable {
             this.image = bookEntity.getImage();
             this.description = bookEntity.getDescription();
             this.publishingdate = bookEntity.getPublishDate();
+            this.bestSeller = bookEntity.isBestSeller();
+            this.EsNuevo = bookEntity.isEsNuevo();
+            this.EsDescuento = bookEntity.isEsDescuento();
+            this.precio = bookEntity.getPrecio();
             if (bookEntity.getEditorial() != null) {
                 this.editorial = new EditorialDTO(bookEntity.getEditorial());
             } else {
@@ -119,21 +128,28 @@ public class BookDTO implements Serializable {
      */
     public BookEntity toEntity() {
         BookEntity bookEntity = new BookEntity();
-        bookEntity.setId(this.id);
-        bookEntity.setName(this.name);
-        bookEntity.setIsbn(this.isbn);
-        bookEntity.setImage(this.image);
-        bookEntity.setDescription(this.description);
-        bookEntity.setPublishDate(this.publishingdate);
-        if (this.editorial != null) {
-            bookEntity.setEditorial(this.editorial.toEntity());
+        bookEntity.setId(this.getId());
+        bookEntity.setName(this.getName());
+        bookEntity.setIsbn(this.getIsbn());
+        bookEntity.setImage(this.getImage());
+        bookEntity.setDescription(this.getDescription());
+        bookEntity.setPublishDate(this.getPublishingdate());
+        if (this.getEditorial() != null) {
+            bookEntity.setEditorial(this.getEditorial().toEntity());
         }
+        bookEntity.setBestSeller(this.isBestSeller());
+        bookEntity.setEsDescuento(this.isEsNuevo());
+        bookEntity.setEsNuevo(this.isEsNuevo());
+        bookEntity.setPrecio(this.getPrecio());
         return bookEntity;
     }
 
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
     /**
-     * Devuelve el ID del libro
-     *
      * @return the id
      */
     public Long getId() {
@@ -141,8 +157,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica el ID del libro.
-     *
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -150,8 +164,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve el nombre del libro.
-     *
      * @return the name
      */
     public String getName() {
@@ -159,8 +171,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica el nombre del libro.
-     *
      * @param name the name to set
      */
     public void setName(String name) {
@@ -168,8 +178,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve el ISBN del libro.
-     *
      * @return the isbn
      */
     public String getIsbn() {
@@ -177,8 +185,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica el ISBN del libro.
-     *
      * @param isbn the isbn to set
      */
     public void setIsbn(String isbn) {
@@ -186,8 +192,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve la imagen del libro.
-     *
      * @return the image
      */
     public String getImage() {
@@ -195,8 +199,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica la imagen del libro.
-     *
      * @param image the image to set
      */
     public void setImage(String image) {
@@ -204,8 +206,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve la descripción del libro.
-     *
      * @return the description
      */
     public String getDescription() {
@@ -213,8 +213,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica la descripción del libro.
-     *
      * @param description the description to set
      */
     public void setDescription(String description) {
@@ -222,8 +220,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve la fecha de publicación del libro.
-     *
      * @return the publishingdate
      */
     public Date getPublishingdate() {
@@ -231,8 +227,6 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica la fecha de publicación del libro.
-     *
      * @param publishingdate the publishingdate to set
      */
     public void setPublishingdate(Date publishingdate) {
@@ -240,8 +234,62 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Devuelve la editorial asociada a este libro.
-     *
+     * @return the bestSeller
+     */
+    public boolean isBestSeller() {
+        return bestSeller;
+    }
+
+    /**
+     * @param bestSeller the bestSeller to set
+     */
+    public void setBestSeller(boolean bestSeller) {
+        this.bestSeller = bestSeller;
+    }
+
+    /**
+     * @return the EsNuevo
+     */
+    public boolean isEsNuevo() {
+        return EsNuevo;
+    }
+
+    /**
+     * @param EsNuevo the EsNuevo to set
+     */
+    public void setEsNuevo(boolean EsNuevo) {
+        this.EsNuevo = EsNuevo;
+    }
+
+    /**
+     * @return the EsDescuento
+     */
+    public boolean isEsDescuento() {
+        return EsDescuento;
+    }
+
+    /**
+     * @param EsDescuento the EsDescuento to set
+     */
+    public void setEsDescuento(boolean EsDescuento) {
+        this.EsDescuento = EsDescuento;
+    }
+
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    /**
      * @return the editorial
      */
     public EditorialDTO getEditorial() {
@@ -249,16 +297,9 @@ public class BookDTO implements Serializable {
     }
 
     /**
-     * Modifica la editorial asociada a este libro.
-     *
      * @param editorial the editorial to set
      */
     public void setEditorial(EditorialDTO editorial) {
         this.editorial = editorial;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }
