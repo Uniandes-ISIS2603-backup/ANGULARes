@@ -5,15 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>co.edu.uniandes.csw</groupId>
-    <artifactId>backstepbystep-2</artifactId>
+    <artifactId>backstepbystep</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>backstepbystep-2</name>
+    <name>backstepbystep</name>
  
-    <modules>
-        <module>backstepbystep-back</module>
-        <module>frontstepbystep-api</module>
-    </modules>
+    <modules></modules>
     
     <repositories>
         <repository>
